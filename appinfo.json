@@ -4,7 +4,7 @@
         ""
     ],
     "companyName": "jyntran",
-    "longName": "TVmaze",
+    "longName": "TVmaze Today",
     "projectType": "pebblejs",
     "resources": {
         "media": [
@@ -37,7 +37,7 @@
         ]
     },
     "sdkVersion": "3",
-    "shortName": "TVmaze",
+    "shortName": "TVmaze Today",
     "targetPlatforms": [
         "aplite",
         "basalt",
