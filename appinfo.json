@@ -5,7 +5,7 @@
     "location"
   ],
   "companyName": "jyntran",
-  "longName": "tvmaze-today",
+  "longName": "TVmaze Today",
   "resources": {
     "media": [
       {
@@ -37,7 +37,7 @@
     ]
   },
   "sdkVersion": "3",
-  "shortName": "tvmaze-today",
+  "shortName": "TVmaze Today",
   "targetPlatforms": [
     "aplite",
     "basalt",
