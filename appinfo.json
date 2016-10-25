@@ -1,5 +1,7 @@
 {
-    "appKeys": {},
+    "appKeys": {
+        "country": "US"
+    },
     "capabilities": [
         "location"
     ],
