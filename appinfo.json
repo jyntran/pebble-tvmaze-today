@@ -1,55 +1,52 @@
 {
-    "appKeys": {
-        "country": "US"
-    },
-    "capabilities": [
-        "location"
-    ],
-    "companyName": "jyntran",
-    "longName": "TVmaze Today",
-    "projectType": "pebblejs",
-    "resources": {
-        "media": [
-            {
-                "file": "images/menu_icon.png",
-                "name": "IMAGE_MENU_ICON",
-                "type": "bitmap"
-            },
-            {
-                "file": "images/logo_splash.png",
-                "name": "IMAGE_LOGO_SPLASH",
-                "type": "bitmap"
-            },
-            {
-                "file": "images/tile_splash.png",
-                "name": "IMAGE_TILE_SPLASH",
-                "type": "bitmap"
-            },
-            {
-                "file": "fonts/UbuntuMono-Regular.ttf",
-                "name": "MONO_FONT_14",
-                "type": "font"
-            },
-            {
-                "file": "images/tvmaze-25.png",
-                "menuIcon": true,
-                "name": "IMAGES_TVMAZE_25_PNG",
-                "type": "bitmap"
-            }
-        ]
-    },
-    "sdkVersion": "3",
-    "shortName": "TVmaze Today",
-    "targetPlatforms": [
-        "aplite",
-        "basalt",
-        "chalk"
-    ],
-    "uuid": "5c05499e-e92d-4c04-8b36-3cf8c03fe2a6",
-    "versionCode": 1,
-    "versionLabel": "1.0",
-    "watchapp": {
-        "hiddenApp": false,
-        "watchface": false
-    }
+  "appKeys": {},
+  "capabilities": [
+    "configurable",
+    "location"
+  ],
+  "companyName": "jyntran",
+  "longName": "tvmaze-today",
+  "resources": {
+    "media": [
+      {
+        "file": "images/tvmaze-25.png",
+        "menuIcon": true,
+        "name": "IMAGE_TVMAZE_25",
+        "type": "bitmap"
+      },
+      {
+        "file": "images/menu_icon.png",
+        "name": "IMAGE_MENU_ICON",
+        "type": "bitmap"
+      },
+      {
+        "file": "images/logo_splash.png",
+        "name": "IMAGE_LOGO_SPLASH",
+        "type": "bitmap"
+      },
+      {
+        "file": "images/tile_splash.png",
+        "name": "IMAGE_TILE_SPLASH",
+        "type": "bitmap"
+      },
+      {
+        "file": "fonts/UbuntuMono-Regular.ttf",
+        "name": "MONO_FONT_14",
+        "type": "font"
+      }
+    ]
+  },
+  "sdkVersion": "3",
+  "shortName": "tvmaze-today",
+  "targetPlatforms": [
+    "aplite",
+    "basalt",
+    "chalk"
+  ],
+  "uuid": "133215f0-cf20-4c05-997b-3c9be5a64e5b",
+  "versionCode": 1,
+  "versionLabel": "0.4",
+  "watchapp": {
+    "watchface": false
+  }
 }
