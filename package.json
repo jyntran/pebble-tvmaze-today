@@ -2,7 +2,9 @@
   "version": "0.4.0",
   "author": "jyntran",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "pebble-clay": "^1.0.3"
+  },
   "keywords": [
     "pebble-app"
   ],
@@ -58,5 +60,5 @@
       "location"
     ]
   },
-  "name": "TVmaze Today"
+  "name": "tvmaze-today"
 }
