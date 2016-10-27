@@ -33,6 +33,7 @@ def build(ctx):
 
     binaries = []
     js_target = ctx.concat_javascript(js_path='src/js')
+    #js_target = ctx.path.ant_glob(['src/js/**/*.js', 'src/js/**/*.json'])
 
     if ctx.env.TARGET_PLATFORMS:
         for platform in ctx.env.TARGET_PLATFORMS:
