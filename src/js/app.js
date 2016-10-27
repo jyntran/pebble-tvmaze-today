@@ -12,6 +12,14 @@ if (!country) {
   Settings.option('country', 'US');
 }
 
+var splash = new UI.Card({
+  title: 'TVmaze Today',
+  titleColor: '#3c948b',
+  banner: 'IMAGE_TVMAZE_25'
+});
+
+splash.show();
+
 var tvmaze = function(country_code) {    
   ajax({
     url: 'http://api.tvmaze.com/schedule?country=' + country_code,
@@ -20,7 +28,6 @@ var tvmaze = function(country_code) {
   var schedule = data.map(function(obj) {
     return {
       show: obj.show.name,
-      name: obj.name,
       network: obj.show.network.name,
       airtime: obj.airtime ? obj.airtime : 'N/A',
       runtime: obj.runtime ? obj.runtime + ' minutes' : 'N/A',
@@ -28,8 +35,12 @@ var tvmaze = function(country_code) {
   });
   
   var menu = new UI.Menu({
+    highlightBackgroundColor: '#3c948b',
+    highlightTextColor: 'white',
     sections: [{
       title: 'TVmaze Today: ' + country_code,
+      textColor: '#3c948b',
+      backgroundColor: '#222222',
       items: schedule.map(function(obj) {
         return {
           title: obj.show,
@@ -43,14 +54,16 @@ var tvmaze = function(country_code) {
     var item  = schedule[e.itemIndex];
     var card = new UI.Card({
       title: item.show,
-      subtitle: item.name,
+      titleColor: '#3c948b',
       body: 'Network: ' + item.network + '\nTime: ' + item.airtime + '\nLength: ' + item.runtime,
+      bodyColor: '#222222',
       scrollable: true
     });
     card.show();
   });
 
-  menu.show();  
+  menu.show();
+  splash.hide();  
   }, function(err) {
     console.log('Error: ' + err.message);
   });
