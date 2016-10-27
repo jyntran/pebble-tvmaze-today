@@ -69,22 +69,10 @@ Pebble.addEventListener('webviewclosed', function(e) {
   
   var dict = clay.getSettings(e.response);
   Settings.option(dict);
- 
+  Settings.option('country', Settings.option('country').toUpperCase());
   tvmaze(Settings.option('country')); 
 });
  
-/*
-Pebble.addEventListener('appmessage', function(e) {
-  var dict = e.payload;
-  console.log('Got message: ' + JSON.stringify(dict));
-  
-  if (dict['country']) {
-    country = dict['country'].toUpperCase();
-  } else {
-    console.log('not a country setting');
-  }
-});
-*/
 
 Pebble.addEventListener('ready', function() {
   tvmaze(Settings.option('country'));  

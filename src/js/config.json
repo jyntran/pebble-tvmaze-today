@@ -18,7 +18,12 @@
         "type": "input",
         "appKey": "country",
         "defaultValue": "US",
-        "label": "Country Code (default: US)"
+        "label": "Country Code",
+        "description": "Default: United States (US)",
+        "attributes": {
+          "placeholder": "eg. US",
+          "maxlength": 2
+        }
       }
     ]
   },
