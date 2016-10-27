@@ -1,53 +1,35 @@
 var UI = require('ui');
 var ajax = require('ajax');
 
-var geoOptions = {
-  enableHighAccuracy: true,
-  maximumAge: 10000,
-  timeout: 10000
-};
+var Clay = require('./clay');
+var clayConfig = require('./config.json');
+var clay = new Clay(clayConfig, null, { autoHandleEvents: false });
+var Settings = require('settings');
 
-var splash = new UI.Card({
-  title: 'TVmaze Today',
-  subtitle: 'Fetching location...'
-});
 
-splash.show();
+var country = Settings.option('country');
+if (!country) {
+  Settings.option('country', 'US');
+}
 
-navigator.geolocation.getCurrentPosition(success,                                         
-function (err) {
-  console.log('location error (' + err.code + '): ' + err.message);
-  var error = new UI.Card({
-    title: 'Error',
-    body: 'Could not determine location.'
-  });
-  error.show();
-}, geoOptions);
-
-function success(pos) {
-  var lat = pos.coords.latitude;
-  var lon = pos.coords.longitude;
-  var country_code, country;
-
-var tvmaze = function() {  
-ajax({
-  url: 'http://api.tvmaze.com/schedule?country=' + country_code,
-  type: 'json'
-},
-function(data) {
+var tvmaze = function(country_code) {    
+  ajax({
+    url: 'http://api.tvmaze.com/schedule?country=' + country_code,
+    type: 'json'
+  }, function(data) {
   var schedule = data.map(function(obj) {
     return {
       show: obj.show.name,
       name: obj.name,
       network: obj.show.network.name,
       airtime: obj.airtime ? obj.airtime : 'N/A',
-      runtime: obj.runtime ? obj.runtime : 'N/A',
+      runtime: obj.runtime ? obj.runtime + ' minutes' : 'N/A',
     };
   });
   
   var menu = new UI.Menu({
     sections: [{
-      title: country,
+      title: 'TVmaze Today: ' + country_code,
       items: schedule.map(function(obj) {
         return {
           title: obj.show,
@@ -62,35 +44,49 @@ function(data) {
     var card = new UI.Card({
       title: item.show,
       subtitle: item.name,
-      body: 'Network: ' + item.network + '\nTime: ' + item.airtime + '\nLength: ' + item.runtime + ' minutes',
+      body: 'Network: ' + item.network + '\nTime: ' + item.airtime + '\nLength: ' + item.runtime,
       scrollable: true
     });
     card.show();
   });
-  
-  menu.show();  
-  splash.hide();
-},
-function(err) {
-  console.log('Error: ' + err.message);
-});  
-};
 
-var getCountry = function() {
-  ajax({
-    url: 'http://nominatim.openstreetmap.org/reverse?format=json&lat=' + lat + '&lon=' + lon,
-    type: 'json'
-  }, function(data) {
-    country_code = data.address.country_code.toUpperCase();
-    country = data.address.country;
-    tvmaze();
+  menu.show();  
   }, function(err) {
-    country_code = 'US';
-    country = 'United States of America';
-    tvmaze();
+    console.log('Error: ' + err.message);
   });
 };
 
-getCountry();
-    
-}
+
+Pebble.addEventListener('showConfiguration', function(e) {
+  Pebble.openURL(clay.generateUrl());
+});
+
+
+Pebble.addEventListener('webviewclosed', function(e) {
+  if (e && !e.response) {
+    return;
+  }
+  
+  var dict = clay.getSettings(e.response);
+  Settings.option(dict);
+ 
+  tvmaze(Settings.option('country')); 
+});
+ 
+/*
+Pebble.addEventListener('appmessage', function(e) {
+  var dict = e.payload;
+  console.log('Got message: ' + JSON.stringify(dict));
+  
+  if (dict['country']) {
+    country = dict['country'].toUpperCase();
+  } else {
+    console.log('not a country setting');
+  }
+});
+*/
+
+Pebble.addEventListener('ready', function() {
+  tvmaze(Settings.option('country'));  
+});
+
