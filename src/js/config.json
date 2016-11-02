@@ -1,0 +1,34 @@
+[
+  {
+    "type": "heading",
+    "defaultValue": "TVmaze Today"
+  },
+  {
+    "type": "text",
+    "defaultValue": "Configure settings here."
+  },
+  {
+    "type": "section",
+    "items": [
+      {
+        "type": "heading",
+        "defaultValue": "Location"
+      },
+      {
+        "type": "input",
+        "appKey": "country",
+        "defaultValue": "US",
+        "label": "Country Code",
+        "description": "Default: United States (US)",
+        "attributes": {
+          "placeholder": "eg. US",
+          "maxlength": 2
+        }
+      }
+    ]
+  },
+  {
+    "type": "submit",
+    "defaultValue": "Save Settings"
+  }
+]

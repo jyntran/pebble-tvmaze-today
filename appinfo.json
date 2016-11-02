@@ -1,8 +1,10 @@
 {
-  "appKeys": {},
+  "appKeys": {
+    "country": 1,
+    "ready": 0
+  },
   "capabilities": [
-    "configurable",
-    "location"
+    "configurable"
   ],
   "companyName": "jyntran",
   "longName": "TVmaze Today",
@@ -11,12 +13,17 @@
       {
         "file": "images/tvmaze-25.png",
         "menuIcon": true,
-        "name": "IMAGE_TVMAZE_25",
+        "name": "IMAGE_MENU_ICON",
         "type": "bitmap"
       },
       {
-        "file": "images/menu_icon.png",
-        "name": "IMAGE_MENU_ICON",
+        "file": "images/tvmaze-80.png",
+        "name": "IMAGE_TVMAZE_80",
+        "type": "bitmap"
+      },
+      {
+        "file": "images/tvmaze-80-bw.png",
+        "name": "IMAGE_TVMAZE_BW_80",
         "type": "bitmap"
       },
       {
@@ -41,7 +48,8 @@
   "targetPlatforms": [
     "aplite",
     "basalt",
-    "chalk"
+    "chalk",
+    "diorite"
   ],
   "uuid": "133215f0-cf20-4c05-997b-3c9be5a64e5b",
   "versionCode": 1,
