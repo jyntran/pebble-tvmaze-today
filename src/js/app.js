@@ -92,4 +92,3 @@ Pebble.addEventListener('webviewclosed', function(e) {
 Pebble.addEventListener('ready', function() {
   tvmaze(Settings.option('country'));  
 });
-
