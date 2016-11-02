@@ -1,5 +1,6 @@
 var UI = require('ui');
 var ajax = require('ajax');
+var Feature = require('platform/feature');
 
 var Clay = require('./clay');
 var clayConfig = require('./config.json');
@@ -14,8 +15,9 @@ if (!country) {
 
 var splash = new UI.Card({
   title: 'TVmaze Today',
-  titleColor: '#3c948b',
-  banner: 'IMAGE_TVMAZE_25'
+  titleColor: Feature.color('#3c948b', 'black'),
+  banner: Feature.color('IMAGE_TVMAZE_80', 'IMAGE_TVMAZE_BW_80'),
+  status: false
 });
 
 splash.show();
@@ -35,7 +37,7 @@ var tvmaze = function(country_code) {
   });
   
   var menu = new UI.Menu({
-    highlightBackgroundColor: '#3c948b',
+    highlightBackgroundColor: Feature.color('#3c948b', 'black'),
     highlightTextColor: 'white',
     sections: [{
       title: 'TVmaze Today: ' + country_code,
@@ -54,7 +56,7 @@ var tvmaze = function(country_code) {
     var item  = schedule[e.itemIndex];
     var card = new UI.Card({
       title: item.show,
-      titleColor: '#3c948b',
+      titleColor: Feature.color('#3c948b', 'black'),
       body: 'Network: ' + item.network + '\nTime: ' + item.airtime + '\nLength: ' + item.runtime,
       bodyColor: '#222222',
       scrollable: true

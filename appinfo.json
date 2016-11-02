@@ -18,6 +18,16 @@
         "type": "bitmap"
       },
       {
+        "file": "images/tvmaze-80.png",
+        "name": "IMAGE_TVMAZE_80",
+        "type": "bitmap"
+      },
+      {
+        "file": "images/tvmaze-80-bw.png",
+        "name": "IMAGE_TVMAZE_BW_80",
+        "type": "bitmap"
+      },
+      {
         "file": "images/menu_icon.png",
         "name": "IMAGE_MENU_ICON",
         "type": "bitmap"
