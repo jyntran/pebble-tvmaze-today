@@ -1,5 +1,6 @@
 var UI = require('ui');
 var ajax = require('ajax');
+var Feature = require('platform/feature');
 
 var Clay = require('./clay');
 var clayConfig = require('./config.json');
@@ -12,6 +13,15 @@ if (!country) {
   Settings.option('country', 'US');
 }
 
+var splash = new UI.Card({
+  title: 'TVmaze Today',
+  titleColor: Feature.color('#3c948b', 'black'),
+  banner: Feature.color('IMAGE_TVMAZE_80', 'IMAGE_TVMAZE_BW_80'),
+  status: false
+});
+
+splash.show();
+
 var tvmaze = function(country_code) {    
   ajax({
     url: 'http://api.tvmaze.com/schedule?country=' + country_code,
@@ -20,7 +30,6 @@ var tvmaze = function(country_code) {
   var schedule = data.map(function(obj) {
     return {
       show: obj.show.name,
-      name: obj.name,
       network: obj.show.network.name,
       airtime: obj.airtime ? obj.airtime : 'N/A',
       runtime: obj.runtime ? obj.runtime + ' minutes' : 'N/A',
@@ -28,8 +37,12 @@ var tvmaze = function(country_code) {
   });
   
   var menu = new UI.Menu({
+    highlightBackgroundColor: Feature.color('#3c948b', 'black'),
+    highlightTextColor: 'white',
     sections: [{
       title: 'TVmaze Today: ' + country_code,
+      textColor: '#3c948b',
+      backgroundColor: '#222222',
       items: schedule.map(function(obj) {
         return {
           title: obj.show,
@@ -43,14 +56,16 @@ var tvmaze = function(country_code) {
     var item  = schedule[e.itemIndex];
     var card = new UI.Card({
       title: item.show,
-      subtitle: item.name,
+      titleColor: Feature.color('#3c948b', 'black'),
       body: 'Network: ' + item.network + '\nTime: ' + item.airtime + '\nLength: ' + item.runtime,
+      bodyColor: '#222222',
       scrollable: true
     });
     card.show();
   });
 
-  menu.show();  
+  menu.show();
+  splash.hide();  
   }, function(err) {
     console.log('Error: ' + err.message);
   });
@@ -77,4 +92,3 @@ Pebble.addEventListener('webviewclosed', function(e) {
 Pebble.addEventListener('ready', function() {
   tvmaze(Settings.option('country'));  
 });
-
