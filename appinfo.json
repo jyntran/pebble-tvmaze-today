@@ -1,7 +1,6 @@
 {
   "appKeys": {},
   "capabilities": [
-    "configurable",
     "location"
   ],
   "companyName": "jyntran",
@@ -37,7 +36,7 @@
     ]
   },
   "sdkVersion": "3",
-  "shortName": "TVmaze Today",
+  "shortName": "TVmaze",
   "targetPlatforms": [
     "aplite",
     "basalt",
